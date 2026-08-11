@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国主题乐园融资方式调研 · 2026 年 8 月</title>
+<style>
+  :root{
+    --ink:#333d37;
+    --ink-soft:#5f6b63;
+    --paper:#f7f3e9;
+    --card:#fffdf7;
+    --green:#4a8a68;
+    --green-deep:#3a6b52;
+    --red:#c96a4f;
+    --sky:#4f7d9c;
+    --amber:#c08a48;
+    --violet:#85749e;
+    --line:#e2dac4;
+    --font-display:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC",sans-serif;
+    --font-body:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif;
+    --font-mono:"SF Mono","Menlo",Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:18px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px 80px;}
+  a{color:var(--sky);}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+  .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+
+  /* 入园凭证 · 顶票 */
+  .hero{background:linear-gradient(150deg,#eef0df 0%,#f3f0df 55%,#f7f3e9 100%);color:var(--green-deep);padding:52px 0 0;}
+  .hero .in{max-width:1060px;margin:0 auto;padding:0 24px 38px;}
+  .hero-top{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:13px;letter-spacing:.18em;}
+  .hero-top .eyebrow{color:var(--green-deep);font-weight:700;}
+  .hero-top .issue{margin-left:auto;color:#4c6b55;}
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(34px,5.4vw,54px);
+    font-weight:900;
+    letter-spacing:.04em;
+    margin:18px 0 8px;
+    line-height:1.2;
+    color:var(--green-deep);
+  }
+  .hero .sub{font-size:18px;color:#41574b;margin:0 0 26px;}
+  .stamp{
+    display:inline-flex;align-items:center;gap:10px;
+    border:2px dashed var(--green-deep);border-radius:8px;
+    background:rgba(255,255,255,.55);
+    padding:6px 14px;font-family:var(--font-display);font-size:14px;
+  }
+  .stamp::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--red);}
+  .stamp strong{font-weight:800;letter-spacing:.08em;}
+  .perf{
+    height:18px;
+    background-color:var(--green);
+    background-image:radial-gradient(circle 5px at 11px 9px,var(--paper) 0 5px,transparent 5.6px);
+    background-size:22px 18px;
+    background-repeat:repeat-x;
+  }
+
+  /* 游园目录 */
+  .toc{
+    position:sticky;top:0;z-index:20;
+    background:var(--green-deep);box-shadow:0 2px 8px rgba(58,107,82,.18);
+  }
+  .toc .inner{
+    max-width:1060px;margin:0 auto;
+    display:flex;gap:22px;overflow-x:auto;
+    padding:14px 24px;font-family:var(--font-display);font-size:15px;
+    white-space:nowrap;
+  }
+  .toc a{color:#fff;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+  .toc a:hover{border-color:var(--paper);}
+  .toc .n{color:#e0b369;font-family:var(--font-mono);margin-right:4px;}
+
+  section{margin-top:64px;}
+  .sec-title{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--green);padding-bottom:10px;margin-bottom:20px;}
+  .sec-title .no{font-family:var(--font-mono);font-size:14px;color:var(--red);letter-spacing:.1em;}
+  .sec-title h2{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:.02em;margin:0;}
+  .sec-title .dues{
+    margin-left:auto;font-family:var(--font-display);font-size:12px;color:#fff;
+    background:var(--sky);padding:3px 10px;border-radius:12px;letter-spacing:.1em;white-space:nowrap;
+  }
+  .lead{color:var(--ink-soft);font-size:18px;max-width:860px;}
+
+  /* 核心结论 */
+  .points{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px;}
+  .pt{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--green);padding:16px 18px;border-radius:4px;}
+  .pt .k{font-family:var(--font-display);font-weight:900;font-size:17px;margin:0 0 6px;color:var(--green-deep);}
+  .pt p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.8;}
+  .pt .k em{font-style:normal;color:var(--red);}
+
+  /* 融资方式总览 */
+  .rides{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .ride{--rc:var(--green);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--rc);padding:14px 16px;border-radius:4px;transition:transform .15s ease;}
+  .ride:nth-child(4n+2){--rc:var(--sky);}
+  .ride:nth-child(4n+3){--rc:var(--amber);}
+  .ride:nth-child(4n+4){--rc:var(--violet);}
+  .ride:hover{transform:translateY(-2px);}
+  .ride .top{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .ride .no{font-family:var(--font-mono);font-size:13px;color:var(--rc);font-weight:700;}
+  .ride h4{font-family:var(--font-display);font-size:18px;font-weight:800;margin:0;}
+  .ride .tag{margin-left:auto;font-family:var(--font-display);font-size:12px;padding:2px 9px;border-radius:10px;white-space:nowrap;}
+  .tag.mature{background:#e2f0e7;color:#3a6b52;}
+  .tag.hot{background:#e7eef3;color:#41647f;}
+  .tag.start{background:#f8ecd8;color:#9c6b2e;}
+  .tag.mix{background:#efead9;color:#6a6253;}
+  .ride p{margin:0;font-size:15.5px;color:var(--ink-soft);line-height:1.75;}
+  .ride .anchor{margin-top:8px;font-size:14px;color:var(--ink);}
+  .ride .anchor b{font-family:var(--font-mono);font-weight:600;color:var(--red);}
+
+  /* 融资模式详解 */
+  .play{margin-top:44px;scroll-margin-top:60px;}
+  .play-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;}
+  .play-head .pno{font-family:var(--font-mono);font-size:14px;color:var(--red);letter-spacing:.12em;}
+  .play-head h3{font-family:var(--font-display);font-size:24px;font-weight:800;margin:0;}
+  .mech{font-size:16.5px;color:var(--ink-soft);margin:0 0 14px;max-width:900px;}
+  .plates{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;}
+  .plate{border:1px solid var(--line);background:var(--card);border-radius:4px;overflow:hidden;}
+  .plate h5{
+    background:linear-gradient(90deg,#4a8a68,#3a6b52);color:#fff;margin:0;
+    font-family:var(--font-display);font-size:15.5px;font-weight:700;
+    padding:8px 12px;
+  }
+  .plate .tagline{font-size:13px;color:#e2f5e9;font-weight:400;margin-left:8px;}
+  .plate dl{margin:0;padding:12px 14px;display:grid;grid-template-columns:72px 1fr;row-gap:8px;column-gap:10px;font-size:15px;line-height:1.65;}
+  .plate dt{color:var(--ink-soft);font-size:13px;font-family:var(--font-display);}
+  .plate dd{margin:0;font-variant-numeric:tabular-nums;}
+  .plate .src{grid-column:1 / -1;padding:9px 14px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft);}
+  .plate .src a{word-break:break-all;}
+  .callout{
+    background:#faf2e2;border:1px solid #e9dcbc;border-left:4px solid var(--amber);
+    padding:12px 16px;border-radius:4px;font-size:16px;color:var(--ink);margin:14px 0;
+  }
+  .callout b{color:var(--green-deep);}
+  .note{font-size:14.5px;color:var(--ink-soft);margin-top:10px;}
+
+  /* 主体案例一览 */
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--card);}
+  table.players{width:100%;border-collapse:collapse;font-size:15px;min-width:820px;}
+  table.players th{
+    background:linear-gradient(90deg,#4a8a68,#3a6b52);color:#fff;text-align:left;
+    font-family:var(--font-display);font-weight:600;font-size:14px;
+    padding:11px 12px;letter-spacing:.05em;white-space:nowrap;
+  }
+  table.players td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top;line-height:1.6;}
+  table.players tr:nth-child(even) td{background:#faf6ea;}
+  table.players td.b{font-family:var(--font-display);font-weight:700;white-space:nowrap;}
+  table.players .st{font-family:var(--font-display);font-size:12px;padding:1px 9px;border-radius:9px;white-space:nowrap;}
+  .st.a{background:#e2f0e7;color:#3a6b52;}
+  .st.b{background:#e7eef3;color:#41647f;}
+  .st.c{background:#f8ecd8;color:#9c6b2e;}
+  .st.d{background:#efead9;color:#6a6253;}
+
+  /* 市政公园盘活 */
+  .maprow{display:grid;grid-template-columns:220px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  .maprow:first-of-type{border-top:0;}
+  .maprow .left .k{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green-deep);}
+  .maprow .left .m{font-size:14px;color:var(--ink-soft);margin-top:4px;}
+  .maprow .right{font-size:16px;}
+  .maprow .right p{margin:0 0 8px;}
+  .maprow .right .case{font-size:15px;color:var(--ink-soft);margin:6px 0 0;}
+  .maprow .right .case b{color:var(--ink);font-weight:600;}
+
+  /* 操作要点与风险提示 */
+  .tips{counter-reset:tip;list-style:none;padding:0;margin:0;}
+  .tips li{counter-increment:tip;position:relative;padding-left:48px;margin:12px 0;font-size:16.5px;}
+  .tips li::before{
+    content:counter(tip,decimal-leading-zero);
+    position:absolute;left:0;top:2px;
+    font-family:var(--font-mono);font-size:14px;color:var(--red);
+    border:1px solid var(--red);border-radius:50%;width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .risks{
+    background:#f9ede8;border:1px solid #eccdc0;border-left:4px solid var(--red);
+    border-radius:4px;padding:14px 18px;margin-top:22px;
+  }
+  .risks h4{font-family:var(--font-display);font-size:17px;margin:0 0 8px;color:var(--red);}
+  .risks ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink);}
+  .risks li{margin:5px 0;}
+
+  /* 来源 */
+  .sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px;}
+  .sbox{border:1px solid var(--line);background:var(--card);border-radius:4px;padding:12px 14px;}
+  .sbox h4{font-family:var(--font-display);font-size:15px;margin:0 0 8px;color:var(--green-deep);}
+  .sbox ul{margin:0;padding-left:16px;font-size:14px;line-height:1.8;}
+  .conf{font-size:15px;color:var(--ink);margin:8px 0;padding-left:14px;border-left:3px solid var(--amber);}
+
+  footer{border-top:3px solid var(--green);margin-top:70px;padding:24px 0 40px;font-size:14px;color:var(--ink-soft);}
+  footer .in{max-width:1060px;margin:0 auto;padding:0 24px;}
+
+  @media (max-width:760px){
+    body{font-size:17px;}
+    .points,.rides,.sgrid{grid-template-columns:1fr;}
+    .maprow{grid-template-columns:1fr;gap:8px;}
+    .hero h1{font-size:36px;}
+    .sec-title h2{font-size:24px;}
+    .wrap{padding:0 16px 60px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .ride{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="in">
+    <div class="hero-top">
+      <span class="eyebrow">文旅融资观察 · 主题乐园专题</span>
+      <span class="issue">第 2026-08 期</span>
+    </div>
+    <h1>中国主题乐园融资方式调研</h1>
+    <p class="sub">六类方式、八条路径、二十余个案例，附市政公园盘活参考</p>
+    <div class="stamp"><strong>数据截至</strong> 2026 年 8 月 · 关键数字已交叉核验</div>
+  </div>
+  <div class="perf"></div>
+</div>
+
+<nav class="toc">
+  <div class="inner">
+    <a href="#points"><span class="n">01</span>核心结论</a>
+    <a href="#map"><span class="n">02</span>融资方式总览</a>
+    <a href="#play"><span class="n">03</span>融资模式详解</a>
+    <a href="#players"><span class="n">04</span>主体案例一览</a>
+    <a href="#park"><span class="n">05</span>市政公园盘活</a>
+    <a href="#edge"><span class="n">06</span>操作要点与风险</a>
+    <a href="#sources"><span class="n">07</span>来源与验证</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="points">
+  <div class="sec-title">
+    <span class="no">01</span><h2>核心结论</h2><span class="dues">六条要点</span>
+  </div>
+  <p class="lead">主题乐园是重资产生意，单园投资动辄二三十亿元，融资方式决定它能开多少家、开在哪里、活得多久。先看六个结论。</p>
+  <div class="points">
+    <div class="pt">
+      <h4 class="k">融资重心从「拿钱建园」转向「运营变现」</h4>
+      <p>华强方特、海昌、宋城都在做轻资产输出：地方出钱建园，品牌方收建设费、许可费或按营收比例的管理费。这是当前本土乐园最主流的扩张方式。</p>
+    </div>
+    <div class="pt">
+      <h4 class="k">产业资本正在密集入主</h4>
+      <p>2025-2026 年，祥源控股、同程旅行、普洛斯系梅志明先后成为海昌、大连圣亚的实控人或主要股东，接盘逻辑是流量与场景协同，不是纯财务回报。</p>
+    </div>
+    <div class="pt">
+      <h4 class="k">债权融资看主体信用</h4>
+      <p>AAA 央企中票利率约 <em>3.5%</em>，财务承压的民企非公开债要到 <em>7.5%</em>。同一赛道的资产，信用不同，利率能差出一倍。</p>
+    </div>
+    <div class="pt">
+      <h4 class="k">公募 REITs 政策全开、实务零突破</h4>
+      <p>截至 2026 年 8 月没有一单纯文旅公募 REITs 上市。主题乐园申报第一单是淮安西游乐园，仍处在筹备早期。</p>
+    </div>
+    <div class="pt">
+      <h4 class="k">门票 ABS 黄金期已过，机构间 REITs 开了新口子</h4>
+      <p>泰达航母主题公园 <em>13.2 亿元</em>机构间 REITs 于 2026 年 4 月发行，是全国首单文旅类，面向合格投资者而非公众。</p>
+    </div>
+    <div class="pt">
+      <h4 class="k">政策边界分明，市政公园正在借鉴这套模式</h4>
+      <p>乐园本体进不了专项债负面清单，基建和市政配套可以。市政公园盘活正把乐园的经营权出让、轻资产接管、以商养园搬过去。</p>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="sec-title">
+    <span class="no">02</span><h2>融资方式总览</h2><span class="dues">八条路径</span>
+  </div>
+  <p class="lead">八条路径，每条标了机制、代表锚点和现状标签。成熟意味着被反复验证过，起步意味着政策放开但落地尚早。</p>
+  <div class="rides">
+    <div class="ride">
+      <div class="top"><span class="no">01</span><h4>股权融资 · 上市通道</h4><span class="tag hot">升级中</span></div>
+      <p>A 股主板门槛高、周期长，港股对盈利和产权历史更宽容，北交所门槛最低。</p>
+      <div class="anchor">锚：华强方特 14 年未成 · 清明上河园转投港股</div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">02</span><h4>股权融资 · 定增与战投</h4><span class="tag hot">密集</span></div>
+      <p>产业资本借定增入主，民营乐园的常见出路，代价是让渡控制权。</p>
+      <div class="anchor">锚：海昌 <b>22.95 亿港元</b> · 大连圣亚 <b>9.56 亿</b></div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">03</span><h4>债权 · 公司债与银团</h4><span class="tag mature">成熟</span></div>
+      <p>看主体信用。AAA 央企 3.5%，承压民企 7.5%；银团贷款是建设期主力。</p>
+      <div class="anchor">锚：华侨城中票 · 上海迪士尼 <b>129 亿</b> 银团</div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">04</span><h4>政策 · 专项债与引导基金</h4><span class="tag mix">结构分化</span></div>
+      <p>专项债只能投文旅基建，乐园本体被列入负面清单；地方文旅基金广覆盖、少落地。</p>
+      <div class="anchor">锚：国办发〔2024〕52 号负面清单</div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">05</span><h4>证券化 · 门票 ABS</h4><span class="tag mix">存量消化</span></div>
+      <p>2012-2018 年集中发行后停滞，疫情后客流不可预测，估值锚失效。</p>
+      <div class="anchor">锚：长隆 <b>32 亿</b> · 海昌 <b>10 亿</b></div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">06</span><h4>证券化 · 公募 REITs</h4><span class="tag start">起步期</span></div>
+      <p>政策链条已打开，实务零突破。现金流季节性和权属是两道硬门槛。</p>
+      <div class="anchor">锚：淮安西游筹备中 · 泰达航母 <b>13.2 亿</b>（机构间）</div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">07</span><h4>合资 · 中外结构</h4><span class="tag mature">成熟样板</span></div>
+      <p>中方国有平台出钱控股乐园资产，外方以品牌和运营收费，土地和 IP 均不入股。</p>
+      <div class="anchor">锚：上海迪士尼 <b>57/43</b> · 北京环球 <b>70/30</b></div>
+    </div>
+    <div class="ride">
+      <div class="top"><span class="no">08</span><h4>轻资产 · 输出运营</h4><span class="tag hot">主流趋势</span></div>
+      <p>业主出钱建园，品牌方输出品牌、设备与运营，收工程费或管理费。</p>
+      <div class="anchor">锚：方特授权投资 · 宋城管理费降至 <b>8%</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="play">
+  <div class="sec-title">
+    <span class="no">03</span><h2>融资模式详解</h2><span class="dues">模式拆解与案例</span>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式一</span><h3>股权融资：上市通道</h3></div>
+    <p class="mech">全面注册制后，主板要求最近三年净利润均为正、累计不低于 1.5 亿元。重资产、扣非利润薄的乐园企业很难达标。港股对盈利和产权历史问题更宽容，2026 年清明上河园转投港股。北交所门槛最低，但需先在新三板挂牌满 12 个月。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>华强方特 <span class="tagline">新三板 834793</span></h5>
+        <dl>
+          <dt>挂牌</dt><dd>2015 年 12 月</dd>
+          <dt>定增</dt><dd>两轮合计 26.98 亿元（2016 年 12.35 亿、2017 年 14.62 亿）</dd>
+          <dt>IPO</dt><dd>A 股长跑 14 年未成；2024 年起招商证券辅导，2026 年 7 月第二十三期辅导报告仍存续</dd>
+          <dt>2025 年</dt><dd>营收 61.5 亿元（-11%）；扣非净利 2353 万元；政府补助 2.65 亿元反超扣非利润</dd>
+        </dl>
+        <div class="src">来源：<a href="https://data.eastmoney.com/notices/detail/A14145/AN202607141826953512.html">华强方特第二十三期辅导报告</a> · <a href="https://finance.eastmoney.com/a/202604233715860341.html">东方财富</a></div>
+      </div>
+      <div class="plate">
+        <h5>恐龙园 <span class="tagline">已摘牌</span></h5>
+        <dl>
+          <dt>挂牌</dt><dd>2015 年 10 月新三板</dd>
+          <dt>IPO</dt><dd>三次失败：2012 创业板无果、2016-2018 主板被否、2020 创业板撤回</dd>
+          <dt>摘牌</dt><dd>2021 年 4 月终止挂牌，退回非公众公司</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.jiemian.com/article/5748015.html">界面新闻</a> · <a href="https://www.lvjie.com.cn/company/2021/0303/21882.html">绿界</a></div>
+      </div>
+      <div class="plate">
+        <h5>清明上河园 <span class="tagline">港股申报中</span></h5>
+        <dl>
+          <dt>历程</dt><dd>2016 年新三板挂牌、2018 年摘牌，A 股辅导多年未申报</dd>
+          <dt>最新</dt><dd>2026 年 6 月 15 日递表港交所，招商证券国际保荐，河南景区第一家</dd>
+          <dt>参照</dt><dd>2026 年报道，A 股文旅上市公司仅 20 余家，近五年只有陕西旅游新上市</dd>
+        </dl>
+        <div class="src">来源：<a href="https://wap.stockstar.com/detail/IG2026061700020343">证券之星</a> · <a href="https://app.dahecube.com/nweb/news/20260626/278398n122d2f1b396.htm">大河</a></div>
+      </div>
+    </div>
+    <p class="note">稀缺的上市成功样本：宋城演艺 2010 年创业板上市，募资 22.26 亿元，资产负债率常年压得很低，2025 年为 14.5%。</p>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式二</span><h3>股权融资：定增与战投入主</h3></div>
+    <p class="mech">近三年乐园企业的定增几乎全部流向还债与营运资金，而非项目扩张。产业资本借定增换控制权，本质是「续命 + 换实控人」。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>海昌海洋公园 <span class="tagline">02255.HK</span></h5>
+        <dl>
+          <dt>配股</dt><dd>2025 年 6 月向祥源控股旗下星海按 0.45 港元/股发行 51 亿股，募资 22.95 亿港元，较市价折让约 46%</dd>
+          <dt>变动</dt><dd>2025 年 10 月交割，祥源持股 38.6% 成控股股东；2026 年 7 月 30 日祥源系与创始家族转让 28.75 亿股给普洛斯联合创始人梅志明（约 11.14 亿港元），公司转无实控人</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.jiemian.com/article/12853387.html">界面新闻</a> · <a href="https://stcn.com/article/detail/3387890.html">证券时报</a> · <a href="https://www.sohu.com/a/1061293036_122014422">搜狐财经</a></div>
+      </div>
+      <div class="plate">
+        <h5>大连圣亚 <span class="tagline">600593</span></h5>
+        <dl>
+          <dt>定增</dt><dd>2025 年 7 月，同程旗下上海潼程按 24.75 元/股全额认购 3864 万股，募资 9.56 亿元，全部用于偿债与补流</dd>
+          <dt>控制权</dt><dd>叠加表决权委托后合计控制约三成表决权，成为控股股东，公司无实控人</dd>
+          <dt>最新</dt><dd>2025 年扭亏 2725 万元后去掉 ST；定增仍在问询阶段</dd>
+        </dl>
+        <div class="src">来源：<a href="https://epaper.cs.com.cn/zgzqb/html/2025-07/29/nw.D110000zgzqb_20250729_2-A06.htm">中国证券报</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式三</span><h3>债权融资：公司债、中票与银团贷款</h3></div>
+    <p class="mech">债权融资高度依赖主体信用。央企和地方国资平台利率低、能滚发；财务承压的民企只能走非公开高成本债或项目贷款。银团贷款是建设期主力，期限常在 10 年左右。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>华侨城集团 <span class="tagline">AAA 央企</span></h5>
+        <dl>
+          <dt>中票</dt><dd>2024 年三期 3 年期：MTN001 实发 21 亿（3.57%）、MTN003 实发 20 亿（3.53%），MTN002 申购区间 3.12%-3.32%</dd>
+          <dt>超短融</dt><dd>2024 年 12 月两期 10 亿（2.76%）、12 亿（2.69%）</dd>
+        </dl>
+        <div class="src">来源：<a href="https://finance.eastmoney.com/a/202401152962236569.html">东方财富</a> · <a href="https://www.163.com/dy/article/JBVRRHRU0519QIKK.html">网易财经</a></div>
+      </div>
+      <div class="plate">
+        <h5>上海迪士尼 <span class="tagline">一期银团</span></h5>
+        <dl>
+          <dt>规模</dt><dd>2012 年 4 月签约，一期 129.15 亿元（部分报道为 129.5 亿）</dd>
+          <dt>结构</dt><dd>国开行总牵头，浦发、交行联合牵头，另有工行、农行、中行、建行等参加；整体 30% 债务、70% 权益</dd>
+        </dl>
+        <div class="src">来源：<a href="http://news.cntv.cn/20120412/100567.shtml">央视</a> · <a href="https://www.guandian.cn/article/20120411/120061.html">观点网</a></div>
+      </div>
+      <div class="plate">
+        <h5>郑州海昌 <span class="tagline">项目贷款</span></h5>
+        <dl>
+          <dt>银团</dt><dd>2023 年 6 月签约 14.36 亿元，期限 10 年，用于郑州项目开业</dd>
+          <dt>对照</dt><dd>海昌 2020 年 7 月非公开发行 2 亿元公司债，票面 7.5%，3 年期。与华侨城 3.5% 的中票比，同赛道利率差近一倍</dd>
+        </dl>
+        <div class="src">来源：<a href="http://www.bjnews.com.cn/detail/1686138544169798.html">新京报</a> · <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2020/0716/2020071601165_c.pdf">港交所公告</a></div>
+      </div>
+    </div>
+    <p class="note">参照 · 香港海洋公园：2020 年立法会批准 54.26 亿港元拨款，其中约 30.9 亿用于偿还商业贷款；2021 年再批 16.64 亿，54 亿政府贷款豁免利息、还款期延至 2059 年。政府兜底是最后手段。</p>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式四</span><h3>政策资金：专项债与政府引导基金</h3></div>
+    <p class="mech">专项债只能投公益属性的文旅基础设施，乐园本体被列入负面清单。政府引导基金普遍「国资引导 + 社会资本」，但直投乐园的落地案例还少。</p>
+    <div class="callout">政策口径：<b>国办发〔2024〕52 号</b>把「主题公园、仿古城（镇、村、街）等商业设施」列入专项债投向负面清单；<b>国办发〔2025〕2 号</b>才放开「符合条件的文化和旅游类项目」，指的仍是基础设施。专项债作项目资本金的比例上限从 25% 提到 30%。</div>
+    <div class="plates">
+      <div class="plate">
+        <h5>专项债案例</h5>
+        <dl>
+          <dt>湘江源</dt><dd>湖南湘江源国家森林公园，2026 年专项债 4000 万元，30 年期，利率 2.49%，投游步道等基础设施</dd>
+          <dt>汉阴</dt><dd>陕西汉阴凤堰古梯田景区专项债 2 亿元</dd>
+        </dl>
+        <div class="src">来源：<a href="https://m.yfbzb.com/inviteBid/detail/20260504_594305734.html">招标公告</a> · <a href="https://www.hanyin.gov.cn/Content-2928240.html">汉阴县政府</a></div>
+      </div>
+      <div class="plate">
+        <h5>政府引导基金一览</h5>
+        <dl>
+          <dt>呼和浩特</dt><dd>市文旅产业投资基金，母基金 3 亿元</dd>
+          <dt>佛山</dt><dd>「环两江」文旅基金 30 亿元、首期 5 亿元，股债贷联动</dd>
+          <dt>南京</dt><dd>云枢文旅强链并购基金 5 亿元、首期 1 亿，2026 年 7 月完成备案</dd>
+          <dt>惠州 / 顺德</dt><dd>环「两山」基金 10 亿；「有德玩」演艺基金 5000 万</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.cnstock.com/commonDetail/754443">上海证券报</a> · <a href="https://news.southcn.com/node_54a44f01a2/d45e846a4d.shtml">南方网</a> · <a href="http://www.huhhot.gov.cn/IGI/upload/file/2025/06/05/20250605112403926V5Z.docx">呼和浩特市政府</a></div>
+      </div>
+    </div>
+    <p class="note">共同点：主题乐园普遍被列入投向，但截至 2026 年 8 月公开可见的直投案例少，多数基金处在设立与募资期。</p>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式五</span><h3>证券化：门票收益权 ABS</h3></div>
+    <p class="mech">把未来门票、演出票款做成优先 / 次级结构融资。2012-2018 年集中发行约 7 只公园景区类 ABS、合计超 85 亿元；疫情后客流不可预测，估值锚失效，新发行几乎停滞。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>华侨城欢乐谷 <span class="tagline">2012 年</span></h5>
+        <dl>
+          <dt>规模</dt><dd>18.5 亿元，基础资产为北京、上海、深圳三家欢乐谷五年入园凭证</dd>
+          <dt>意义</dt><dd>国内首例上市公司 ABS 融资，已到期清算</dd>
+        </dl>
+        <div class="src">来源：<a href="http://www.p5w.net/stock/news/gsxw/201212/t4618090.htm">全景网</a></div>
+      </div>
+      <div class="plate">
+        <h5>广州长隆 <span class="tagline">2014 年</span></h5>
+        <dl>
+          <dt>规模</dt><dd>32 亿元，优先级 30 亿元 AA+，当时国内规模最大的旅游 ABS</dd>
+          <dt>结局</dt><dd>2018 年 5 月提前终止进入清算</dd>
+        </dl>
+        <div class="src">来源：<a href="https://paper.cnstock.com/html/2014-09/24/content_447293.htm">上海证券报</a></div>
+      </div>
+      <div class="plate">
+        <h5>海昌 · 青岛极地 <span class="tagline">2018 年</span></h5>
+        <dl>
+          <dt>规模</dt><dd>10 亿元，优先级 9.5 亿元 AA+，全国首单海洋公园 ABS</dd>
+          <dt>结构</dt><dd>基础资产为青岛极地海洋世界五年入园凭证，含优先劣后、差额支付、场馆抵押增信</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.cnfin.com/stock-xh08/a/20180912/1777498.shtml">中国金融信息网</a></div>
+      </div>
+      <div class="plate">
+        <h5>曼听公园 <span class="tagline">2016 年</span></h5>
+        <dl>
+          <dt>规模</dt><dd>7.7 亿元，优先级 7.2 亿元 AAA</dd>
+          <dt>意义</dt><dd>国内首单公园演出票款 ABS，云南城投担保</dd>
+        </dl>
+        <div class="src">来源：<a href="http://m.21jingji.com/article/20160511/herald/353f85bc8ced86987303a79d67203228.html">21 财经</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式六</span><h3>证券化：公募 REITs 与机构间 REITs</h3></div>
+    <p class="mech">政策链条已打开：2024 年发改投资〔2024〕1014 号把 5A/4A 景区及配套纳入，2025 年发改办投资〔2025〕991 号扩围到商旅文体健融合综合体。但公募 REITs 要求「成熟、稳定、可持续」现金流，乐园淡旺季波动大，景区资源权属又难以过户，实务至今零突破。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>淮安西游乐园 <span class="tagline">申报筹备中</span></h5>
+        <dl>
+          <dt>进展</dt><dd>2026 年 5 月启动服务机构招标，拟发行不低于 10 亿元、预估存续 30 年；6 月华泰资管与华泰联合中标</dd>
+          <dt>底层</dt><dd>2021 年开园的《西游记》主题乐园，总投资 22 亿元、4A 景区</dd>
+          <dt>意义</dt><dd>主题乐园公募 REITs 的第一单候选，仍在筹备早期</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.guandian.cn/article/20260519/561890.html">观点网</a> · <a href="http://finance.sina.com.cn/wm/2026-06-02/doc-inhzzivq4804525.shtml">新浪财经</a></div>
+      </div>
+      <div class="plate">
+        <h5>泰达航母主题公园 <span class="tagline">机构间 REITs</span></h5>
+        <dl>
+          <dt>发行</dt><dd>2026 年 4 月 30 日上交所发行 13.2 亿元，AAA，全国首单文旅机构间 REITs（面向合格投资者，非公募）</dd>
+          <dt>底层</dt><dd>天津 4A 景区，2024 年营收 2.6 亿元、净利 4500 万元</dd>
+          <dt>投向</dt><dd>二期酒店及景观配套、清偿存量债务</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.cnstock.com/commonDetail/711915">中国证券报</a> · <a href="https://finance.cnr.cn/ycbd/20260507/t20260507_527612884.shtml">央广网</a></div>
+      </div>
+      <div class="plate">
+        <h5>三亚亚特兰蒂斯 <span class="tagline">复星商业 REIT</span></h5>
+        <dl>
+          <dt>申报</dt><dd>2026 年 3 月申报，估值 139.28 亿元，拟上交所上市</dd>
+          <dt>性质</dt><dd>底层以酒店为主，酒店收入占比过半，偏商业不动产逻辑，非纯主题乐园</dd>
+          <dt>最新</dt><dd>2026 年 4 月 27 日收到首轮问询</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.jiemian.com/article/14649651.html">界面新闻</a></div>
+      </div>
+    </div>
+    <p class="note">现状：近 30 家 4A 以上景区在推进申报筹备（玉龙雪山拟不低于 25 亿元，西游乐园、石林均不低于 10 亿元）。全球范围看，迪士尼、环球、默林也没有跑通主题乐园公募 REITs。</p>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式七</span><h3>合资：中外结构</h3></div>
+    <p class="mech">中方国有平台出钱控股乐园资产，外方以品牌和运营收费。土地和 IP 都不作价入股，分别由中方出租、外方许可。中方在管理公司参股，是为了分到运营收益。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>上海迪士尼 <span class="tagline">上海模式</span></h5>
+        <dl>
+          <dt>结构</dt><dd>三家合资公司：乐园公司注册资本 171.36 亿（申迪 57% / 迪士尼 43%）、配套公司 31.68 亿、管理公司 2000 万（申迪 30% / 迪士尼 70%）</dd>
+          <dt>投资</dt><dd>一期主题乐园约 245 亿元，加配套与 2014 年增资，合计约 55 亿美元</dd>
+          <dt>中方</dt><dd>申迪由陆家嘴集团、锦江国际、上海文广、百联四家上海国资组成，比例以工商登记为准</dd>
+        </dl>
+        <div class="src">来源：<a href="http://cnews.chinadaily.com.cn/2016-05/09/content_25167388_3.htm">中国日报</a> · <a href="https://www.yicai.com/news/4039975.html">第一财经</a></div>
+      </div>
+      <div class="plate">
+        <h5>北京环球影城 <span class="tagline">北京模式</span></h5>
+        <dl>
+          <dt>结构</dt><dd>首寰投资持股 70%、康卡斯特 NBC 环球持股 30%；首寰由首旅集团牵头五家市属、区属国企</dd>
+          <dt>投资</dt><dd>一期口径不一：500 亿 / 350 亿 / 460 亿 / 65 亿美元，含配套超 1000 亿，报告按多口径标注</dd>
+          <dt>运营</dt><dd>开园后首寰 2023 年营收 79.51 亿、净亏 15.28 亿，前期折旧摊销大</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.yicai.com/news/100898743.html">第一财经</a> · <a href="http://m.cnfin.com/gs-lb//zixun/20210920/3374699_1.html">中国金融信息网</a></div>
+      </div>
+    </div>
+    <p class="note">关键安排：上海迪士尼里中方在管理公司持股 30%，分享运营收益，这是国际乐园合资里的中国特例。2018 年发改社会规〔2018〕400 号明确禁止主题公园与房地产捆绑供地，土地靠招拍挂和有偿出租。</p>
+  </div>
+
+  <div class="play">
+    <div class="play-head"><span class="pno">模式八</span><h3>轻资产：输出运营</h3></div>
+    <p class="mech">业主出钱建园，品牌方输出品牌、设备、管理、运营，收工程费、许可费或按营收比例的管理费。这是当前本土乐园扩张的主流，把重资产和折旧压力转移给业主。</p>
+    <div class="plates">
+      <div class="plate">
+        <h5>华强方特 · 授权投资</h5>
+        <dl>
+          <dt>模式</dt><dd>地方国资出钱建园，方特少量参股（安阳项目仅 6.43%），输出品牌、游乐设施与运营，收入靠建设管理咨询费、设备安装费和运营期许可费</dd>
+          <dt>大同样本</dt><dd>首个授权投资项目，工程投资约 10 亿元全由大同国资自筹，开业前方特已收回超 2 亿元咨询与设备费；对比自投同类单园 20-25 亿元</dd>
+        </dl>
+        <div class="src">来源：<a href="https://www.goldenfinance.com.cn/article/70159.html">金石财经</a> · <a href="https://finance.sina.cn/2016-07-14/detail-ifxuaqhu0295607.d.html">新浪财经</a></div>
+      </div>
+      <div class="plate">
+        <h5>海昌 · OAAS 运营即服务</h5>
+        <dl>
+          <dt>卖资产</dt><dd>2021 年 10 月把武汉、成都、天津、青岛四个运营超 10 年的海洋公园 100% 股权和郑州在建项目 66% 股权卖给私募基金 MBK Partners，套现 65.3 亿元</dd>
+          <dt>转向</dt><dd>合作方投资、海昌运营并表；2024 年中报明确郑州是最后一个自投重资产项目</dd>
+          <dt>新项目</dt><dd>北京通州项目由通州城建投资、海昌运营并表，2027 年具备运营条件</dd>
+        </dl>
+        <div class="src">来源：<a href="https://finance.sina.com.cn/roll/2021-10-18/doc-iktzqtyu2171079.shtml">新浪财经</a> · <a href="http://www.changjiangtimes.com/2021/10/618561.html">长江商报</a></div>
+      </div>
+      <div class="plate">
+        <h5>宋城演艺 · 管理输出</h5>
+        <dl>
+          <dt>收费</dt><dd>两段式：一揽子服务费（品牌授权 + 编创 + 设计 + 开业筹备）+ 委托经营管理费，原按年营收 20%，2025 年 1 月起统一降至 8%</dd>
+          <dt>项目</dt><dd>已开业轻资产项目 4 个（长沙炭河、宜春明月、郑州黄帝、三峡千古情）；2025 年签约青岛「丝路千古情」，服务费 2.6 亿元、10 年期</dd>
+        </dl>
+        <div class="src">来源：<a href="http://stock.stockstar.com/RB2026080600023091.shtml">证券之星</a> · <a href="https://www.caiwennews.com/article/1363399.shtml">财闻网</a></div>
+      </div>
+    </div>
+    <p class="note">所有权与经营权分离：上海迪士尼是「中方控股资产、外方主导经营」的样板，本土轻资产输出可以理解为同一逻辑的本地化，区别在于由谁当那个出钱建园的业主。</p>
+  </div>
+</section>
+
+<section id="players">
+  <div class="sec-title">
+    <span class="no">04</span><h2>主体案例一览</h2><span class="dues">主要主体对比</span>
+  </div>
+  <div class="scroll">
+    <table class="players">
+      <thead>
+        <tr><th>主体</th><th>上市状态</th><th>主要融资手段</th><th>代表数字</th><th>当前动向</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="b">华强方特</td><td><span class="st b">新三板</span></td>
+          <td>定增 26.98 亿 + 地方补助</td><td>2025 扣非净利 2353 万、补助 2.65 亿</td><td>招商证券辅导 IPO 进行中</td>
+        </tr>
+        <tr>
+          <td class="b">宋城演艺</td><td><span class="st a">创业板</span></td>
+          <td>IPO 22.26 亿 + 定增</td><td>资产负债率 14.5%</td><td>轻资产管理费降至 8% 换规模</td>
+        </tr>
+        <tr>
+          <td class="b">海昌海洋公园</td><td><span class="st b">港股</span></td>
+          <td>港股 IPO + 卖资产 65.3 亿 + 配股 22.95 亿港元</td><td>2025 营收 15.49 亿元</td><td>无实控人，转 OAAS 轻资产</td>
+        </tr>
+        <tr>
+          <td class="b">大连圣亚</td><td><span class="st a">A 股主板</span></td>
+          <td>定增 9.56 亿</td><td>2025 扭亏 2725 万元</td><td>同程入主，定增待注册</td>
+        </tr>
+        <tr>
+          <td class="b">华侨城</td><td><span class="st a">A 股</span></td>
+          <td>中票 / 超短融 + 银团 + ABS</td><td>AAA 中票 3.53%</td><td>连续四年亏损，文旅收入占比升至 68%</td>
+        </tr>
+        <tr>
+          <td class="b">恐龙园</td><td><span class="st d">已摘牌</span></td>
+          <td>新三板定增</td><td>三次 IPO 失败</td><td>退回非公众公司</td>
+        </tr>
+        <tr>
+          <td class="b">长隆</td><td><span class="st d">未上市</span></td>
+          <td>自有资金 + 银行贷款</td><td>资产千亿级</td><td>坚持不上市，滚动开发</td>
+        </tr>
+        <tr>
+          <td class="b">清明上河园</td><td><span class="st b">港股申报中</span></td>
+          <td>新三板 → 港股</td><td>2026 年 6 月递表</td><td>港股上市进行时</td>
+        </tr>
+        <tr>
+          <td class="b">上海迪士尼</td><td><span class="st c">合资未上市</span></td>
+          <td>中方出资 + 129 亿银团</td><td>乐园公司申迪 57%</td><td>疯狂动物城二期扩建</td>
+        </tr>
+        <tr>
+          <td class="b">北京环球</td><td><span class="st c">合资未上市</span></td>
+          <td>首寰出资 70%</td><td>一期投资多口径</td><td>二期筹备中</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="park">
+  <div class="sec-title">
+    <span class="no">05</span><h2>市政公园盘活参考</h2><span class="dues">存量资产盘活</span>
+  </div>
+  <p class="lead">地方盘活市政公园，本质是把「财政养园」的存量资产变成能自己造血、或能交给市场运营的资产。主题乐园的融资工具箱正好适配，四组映射。</p>
+
+  <div class="maprow">
+    <div class="left"><div class="k">经营权出让</div><div class="m">对应模式七 · 政策配套</div></div>
+    <div class="right">
+      <p>政府公开招标出让若干年经营权，社会资本投建运管，期满无偿移交。</p>
+      <p class="case"><b>贵阳乌当区</b>：3 个城市公园 20 年经营权出让，估算总投资 1.83 亿元、出让金下限 1.53 亿元，业态含停车场、充电桩、集装箱商业、游乐园。<br><b>毕节</b>：南山公园 20 年经营权 6296 万元竞得；天河公园 30 年经营权评估 4.2 亿元，含民宿、7D 影院、儿童卡丁车。</p>
+    </div>
+  </div>
+
+  <div class="maprow">
+    <div class="left"><div class="k">轻资产接管 + 主题业态</div><div class="m">对应模式八</div></div>
+    <div class="right">
+      <p>运营方出品牌、出运营，政府出场地和长租期，把老公园盘成主题场景。</p>
+      <p class="case"><b>天津宁园</b>：区里与文旅企业合资 4300 万元建「宁园欢乐世界」，40 多个项目、无动力区 39 元通票，门票和租金反哺公园维护。<br><b>北京朝阳公园</b>：把「欧陆风韵」区域整租给泡泡玛特，投入约 3 亿元做 POPLAND IP 乐园，2024 年已盈利，开园首月二次消费占比 72%，总投入约为上海迪士尼的百分之一。</p>
+    </div>
+  </div>
+
+  <div class="maprow">
+    <div class="left"><div class="k">财政 + 企业共建 · 以商养园</div><div class="m">对应模式四</div></div>
+    <div class="right">
+      <p>财政补一块、企业投一块，企业拿运营权和配套商业经营权回本。</p>
+      <p class="case"><b>重庆中央公园云谷无动力乐园</b>：总投资 4200 万元，财政专项资金 55%、龙湖代建 45%，企业拿 5 年运营权和 1.2 万㎡商业租赁权，第 3 年现金流回正。<br><b>重庆两江新区</b>：推进 17 个公园市场化改革，预计引入社会资金 25.7 亿元。</p>
+    </div>
+  </div>
+
+  <div class="maprow">
+    <div class="left"><div class="k">品牌赞助摊成本</div><div class="m">拓展思路</div></div>
+    <div class="right">
+      <p>政府出场地、专业方运营、品牌方冠名，用赞助费覆盖运营成本。</p>
+      <p class="case"><b>香港中环友邦乐园</b>：冠名费每年约 3000-5000 万港元，可分摊 40%-60% 的年运营成本；年营收约 1.2-1.5 亿港元，运营方净利率 8%-12%。</p>
+    </div>
+  </div>
+
+  <div class="callout">共性的纪律：期限给足（15-30 年）才有投资预期；期满资产无偿移交；收入多元化（门票 + 商业租金 + 停车 + 充电 + 场地）；守住公益底线，免费时段和管护责任不能丢。要防两件事：一是「重经营轻管护」伤了公园的公共属性，二是经营性投入不能借专项债的名目（乐园本体在负面清单内），要靠社会资本。</div>
+</section>
+
+<section id="edge">
+  <div class="sec-title">
+    <span class="no">06</span><h2>操作要点与风险提示</h2><span class="dues">操作建议</span>
+  </div>
+  <ol class="tips">
+    <li>先想清楚重资产还是轻资产，再选融资方式。自建走银团加主体信用，输出走管理费现金流。</li>
+    <li>现金流稳定是证券化的前提。淡旺季波动大的乐园，ABS 和 REITs 都难定价。</li>
+    <li>上市路径按自身质地选：财务达标看主板，历史包袱多考虑港股，小体量看北交所。</li>
+    <li>产业资本入主正在成为民营乐园的常见出路，要提前想好控制权让渡的代价。</li>
+    <li>市政公园盘活借鉴乐园模式时，公益性边界和期满移交条款要先立好。</li>
+  </ol>
+  <div class="risks">
+    <h4>边界提示 · 只提不展开</h4>
+    <ul>
+      <li>高杠杆「地产 + 文旅」已被验证走不通：恒大童世界烂尾后靠国资接盘重启，长沙项目折价近三成转手。</li>
+      <li>万达 2017 年把 13 个文旅城卖给融创，2022 年后融创抛售这批资产普遍流拍、以物抵债。</li>
+      <li>PPP 在文旅领域基本退场，2023 年 115 号文后只剩「使用者付费 + 特许经营」。</li>
+      <li>补贴依赖会卡死 IPO：方特政府补助常年占利润总额三成以上，扣非利润薄成为历次上市审核的核心障碍。</li>
+      <li>重资产高负债在行业下行期拖垮主体：华侨城连续四年亏损超 400 亿元。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="sec-title">
+    <span class="no">07</span><h2>来源与验证</h2><span class="dues">数据口径</span>
+  </div>
+  <p class="lead">2026 年 8 月 11 日通过网络检索新闻、上市公司公告、交易所披露和政府文件收集。关键数字至少两个独立来源交叉；口径冲突处明示；单一来源或未核实项不采信或明确标注。以下按类列出主要来源，完整链接见各案例铭牌。</p>
+  <div class="sgrid">
+    <div class="sbox">
+      <h4>政策文件</h4>
+      <ul>
+        <li>国办发〔2024〕52 号（专项债投向负面清单）<a href="https://www.gov.cn/zhengce/content/202412/content_6994502.htm">中国政府网</a></li>
+        <li>国办发〔2025〕2 号（文旅项目专项债）<a href="https://www.stcn.com/article/detail/1492103.html">证券日报解读</a></li>
+        <li>发改办投资〔2025〕991 号（REITs 行业清单扩围）</li>
+        <li>发改社会规〔2018〕400 号（主题公园供地约束）</li>
+      </ul>
+    </div>
+    <div class="sbox">
+      <h4>公告与交易所披露</h4>
+      <ul>
+        <li>海昌海洋公园历年公告（港交所）</li>
+        <li>华强方特 IPO 辅导报告（<a href="https://data.eastmoney.com/notices/detail/A14145/AN202607141826953512.html">东方财富数据中心</a>）</li>
+        <li>华侨城集团中票发行（媒体 + 交易所口径）</li>
+        <li>大连圣亚定增（<a href="https://epaper.cs.com.cn/zgzqb/html/2025-07/29/nw.D110000zgzqb_20250729_2-A06.htm">中国证券报</a>）</li>
+      </ul>
+    </div>
+    <div class="sbox">
+      <h4>权威财经媒体</h4>
+      <ul>
+        <li>证券时报、中国证券报、财联社、界面新闻、21 世纪经济报道、观点网、证券之星、上海证券报</li>
+      </ul>
+    </div>
+    <div class="sbox">
+      <h4>政府与地方渠道</h4>
+      <ul>
+        <li>贵阳乌当区政府公示（<a href="https://www.gzwd.gov.cn/xwzx/tzgg/202511/t20251114_88946604.html">经营权出让</a>）</li>
+        <li>重庆城管局（新华社转载 <a href="https://cgj.cq.gov.cn/zwxx_173/bmdt/mtkd/202605/t20260520_15688136.html">公园市场化机制</a>）</li>
+        <li>呼和浩特市、惠州市政府，北方网，新京报</li>
+      </ul>
+    </div>
+  </div>
+  <h4 style="font-family:var(--font-display);font-size:15px;margin:24px 0 10px;color:var(--green-deep);">口径差异与待核项</h4>
+  <p class="conf">北京环球一期投资：500 亿 / 350 亿 / 460 亿 / 65 亿美元多口径并存，含配套口径超 1000 亿。</p>
+  <p class="conf">上海迪士尼一期：约 245 亿元（主体）与合计约 55 亿美元口径不同，是分期计入所致。</p>
+  <p class="conf">海昌 2021 年交易公告为 65.3 亿元，部分报道写作 65 亿。</p>
+  <p class="conf">万达 2017 年交易两个版本：7 月 10 日版 631.7 亿，7 月 19 日签约版 637.5 亿。</p>
+  <p class="conf">华强方特 2026 年 2 月「IPO 终止」传闻与 7 月辅导报告冲突，以辅导报告为准，持续跟踪。</p>
+  <p class="conf">海昌 1 亿美元可转债是否完成发行，截至 2026 年 8 月无公开确认，按未确认处理。</p>
+  <p class="conf">华侨城 2015 年定增金额未核到权威数字；申迪四家股东的持股比例以工商登记为准。</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="in">
+    张走走 · 文旅融资观察 · 主题乐园专题 · 2026 年 8 月<br>
+    本报告可自由转载，注明来源即可。数据随时间变动，引用前请复核。
+  </div>
+</footer>
+
+</body>
+</html>
